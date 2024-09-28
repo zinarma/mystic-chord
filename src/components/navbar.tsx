@@ -18,7 +18,7 @@ import { useState } from "react";
 const navigationItemList = [
   {
     name: "Home",
-    link: "#",
+    link: "hero",
   },
   {
     name: "Reviews",
@@ -34,14 +34,24 @@ interface NavItemProps {
   name: string;
   link: string;
   setOpen: any;
+  mobileMenu: boolean;
 }
 
-const NavItem = ({ name, link, setOpen }: NavItemProps) => {
+const NavItem = ({ name, link, setOpen, mobileMenu }: NavItemProps) => {
+  const textClassesGeneral =
+    "text-white pl-3 pr-4 py-2 hover:text-blue-700 md:p-0 rounded cursor-pointer";
+  const textClassesMobile =
+    "mt-2 max-w-[64ch] tracking-widest leading-loose text-xl";
+
   return (
     <li className="p-4">
       <a
         // href={link}
-        className="text-white pl-3 pr-4 py-2 hover:text-blue-700 md:p-0 rounded cursor-pointer"
+        className={
+          mobileMenu
+            ? `${textClassesGeneral} ${textClassesMobile}`
+            : `${textClassesGeneral}`
+        }
         onClick={(event) => {
           setOpen(false);
           event.preventDefault();
@@ -61,17 +71,21 @@ const NavItem = ({ name, link, setOpen }: NavItemProps) => {
   );
 };
 
-const wait = () => new Promise((resolve) => setTimeout(resolve, 200));
+const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="px-2 py-4">
+    <nav className="sticky bg-background top-0 left-0 px-2 py-4">
       <div className="container mx-auto flex items-center justify-between">
         <a href="#" className="flex">
-          <Image src={mainLogo} width={160} height={160} alt="logo" />
-          <span className="self-center text-4xl font-thin whitespace-nowrap">
+          <Image
+            className="h-auto w-auto max-w-12 md:max-w-24"
+            src={mainLogo}
+            alt="logo"
+          />
+          <span className="underline-gradient self-center text-3xl sm:text-4xl font-thin whitespace-nowrap">
             Mystic Chord
           </span>
         </a>
@@ -94,6 +108,7 @@ const Navbar = () => {
                           link={navigationItem.link}
                           key={navigationItem.name}
                           setOpen={setOpen}
+                          mobileMenu={true}
                         />
                       ))}
                     </ul>
@@ -111,6 +126,7 @@ const Navbar = () => {
                 name={navigationItem.name}
                 link={navigationItem.link}
                 setOpen={setOpen}
+                mobileMenu={false}
               />
             ))}
           </ul>

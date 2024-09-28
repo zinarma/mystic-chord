@@ -10,9 +10,9 @@ const ContactForm = () => {
   const { toast } = useToast();
 
   return (
-    <div id="contact" className="flex flex-col flex-grow justify-center">
+    <div id="contact" className="flex flex-col justify-center h-screen">
       <h1 className="p-4">Contact Us</h1>
-      <form className="flex flex-col flex-grow">
+      <form className="flex flex-col">
         <div className="grid p-4 gap-1.5">
           <Label htmlFor="email">Your Email</Label>
           <Input type="email" id="email" placeholder="Email" />

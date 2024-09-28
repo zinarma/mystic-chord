@@ -1,8 +1,8 @@
 const Reviews = () => {
   return (
-    <div id="reviews" className="py-32">
-      <h1 className="p-4 md:p-8">Reviews</h1>
-      <div className="p-4 md:p-8">
+    <div id="reviews" className="flex flex-col justify-center h-screen">
+      <h1 className="p-4 md:p-8 text-gradient">Reviews</h1>
+      <p className="p-4 md:p-8">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -10,7 +10,7 @@ const Reviews = () => {
         velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
         occaecat cupidatat non proident, sunt in culpa qui officia deserunt
         mollit anim id est laborum
-      </div>
+      </p>
     </div>
   );
 };
