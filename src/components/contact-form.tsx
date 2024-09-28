@@ -1,11 +1,16 @@
+"use client";
+
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 
 const ContactForm = () => {
+  const { toast } = useToast();
+
   return (
-    <div className="flex flex-col flex-grow justify-center">
+    <div id="contact" className="flex flex-col flex-grow justify-center">
       <h1 className="p-4">Contact Us</h1>
       <form className="flex flex-col flex-grow">
         <div className="grid p-4 gap-1.5">
@@ -17,7 +22,17 @@ const ContactForm = () => {
           <Textarea placeholder="Type your message here." id="message" />
         </div>
         <div className="grid p-4 gap-1.5">
-          <Button className="w-24" type="submit">
+          <Button
+            onClick={(event) => {
+              event.preventDefault();
+              toast({
+                title: "Success: Email Sent",
+                description: "We will get back to you as soon as possible.",
+              });
+            }}
+            className="w-24"
+            type="submit"
+          >
             Submit
           </Button>
         </div>
