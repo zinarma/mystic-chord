@@ -5,13 +5,23 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 
 const ContactForm = () => {
   const { toast } = useToast();
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const sendEmail = (event: FormEvent) => {
+  const sendEmail = async (event: FormEvent) => {
     event.preventDefault();
+    setLoading(true);
+    setEmail("");
+    setMessage("");
+
+    const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
+    await wait();
+    setLoading(false);
     toast({
       title: "Success: Email Sent",
       description: "We will get back to you as soon as possible.",
@@ -33,6 +43,9 @@ const ContactForm = () => {
               type="email"
               id="email"
               placeholder="Email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              disabled={loading}
             />
           </div>
           <div className="grid p-4 gap-1.5">
@@ -41,11 +54,19 @@ const ContactForm = () => {
               className="bg-gray-900"
               placeholder="Type your message here."
               id="message"
+              value={message}
+              onChange={(event) => setMessage(event.target.value)}
+              disabled={loading}
             />
           </div>
           <div className="grid p-4 gap-1.5">
-            <Button onClick={sendEmail} className="w-24" type="submit">
-              Submit
+            <Button
+              onClick={sendEmail}
+              className="w-24"
+              type="submit"
+              disabled={loading}
+            >
+              {loading ? "Sending..." : "Submit"}
             </Button>
           </div>
         </form>

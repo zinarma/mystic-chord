@@ -8,8 +8,8 @@ export interface Album {
   
   export const listenNowAlbums: Album[] = [
     {
-      name: "React Rendezvous",
-      artist: "Ethan Byte",
+      name: "To Train a Killer (First Hunt)",
+      artist: "Full Adaptive OST",
       cover: {firstImage},
     },
     {

@@ -2,6 +2,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Album } from "@/components/music/data";
 import firstImage from "@/public/to-train-a-killer.png";
+import mainLogo from "@/public/main-logo.png";
 
 interface AlbumArtworkProps extends React.HTMLAttributes<HTMLDivElement> {
   album: Album;
