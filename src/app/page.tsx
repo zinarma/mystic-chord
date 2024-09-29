@@ -4,6 +4,7 @@ import HeroSection from "@/components/hero-section";
 import MusicPage from "@/components/music/music-main";
 import Navbar from "@/components/navbar";
 import Reviews from "@/components/reviews";
+import AboutMe from "@/components/about-me";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <MusicPage />
+      <AboutMe />
       <Reviews />
       <ContactForm />
       <Footer />

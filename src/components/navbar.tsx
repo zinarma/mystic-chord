@@ -21,6 +21,14 @@ const navigationItemList = [
     link: "hero",
   },
   {
+    name: "Music",
+    link: "music",
+  },
+  {
+    name: "About",
+    link: "about",
+  },
+  {
     name: "Reviews",
     link: "reviews",
   },
@@ -71,7 +79,7 @@ const NavItem = ({ name, link, setOpen, mobileMenu }: NavItemProps) => {
   );
 };
 
-const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
+const wait = () => new Promise((resolve) => setTimeout(resolve, 0));
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -86,7 +94,7 @@ const Navbar = () => {
             alt="logo"
           />
           <span className="underline-gradient self-center text-3xl sm:text-4xl font-thin whitespace-nowrap">
-            Mystic Chord
+            Mystic Chord Music
           </span>
         </a>
         <div className="flex">

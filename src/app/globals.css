@@ -79,7 +79,7 @@ body {
 }
 
 p {
-  @apply mt-2 max-w-[64ch] tracking-wide leading-relaxed md:text-xl text-base;
+  @apply mt-2 max-w-[64ch] tracking-wide leading-relaxed md:text-lg text-base;
 }
 h1 {
   @apply scroll-m-20 text-4xl tracking-tight lg:text-5xl;
@@ -89,9 +89,13 @@ h2 {
 }
 
 .text-gradient {
-  @apply bg-gradient-to-r from-blue-700 via-indigo-600 to-indigo-900 inline-block text-transparent bg-clip-text;
+  @apply bg-gradient-to-r from-red-900  via-purple-500 to-blue-700 inline-block text-transparent bg-clip-text;
+}
+
+.text-gradient-secondary {
+  @apply bg-gradient-to-b from-purple-500  to-blue-500 inline-block text-transparent bg-clip-text;
 }
 
 .underline-gradient {
-  @apply bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 bg-[length:100%_6px] bg-no-repeat bg-bottom pb-2;
+  @apply bg-gradient-to-r from-red-500 via-fuchsia-500 to-indigo-500 bg-[length:100%_6px] bg-no-repeat bg-bottom pb-2;
 }
