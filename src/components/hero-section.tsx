@@ -7,7 +7,7 @@ const HeroSection = () => {
   return (
     <div
       id="hero"
-      className="flex flex-col gap-4 justify-center h-screen px-4 md:p-8"
+      className="flex flex-col gap-4 justify-center h-screen px-4 p-4 md:p-8"
     >
       <div className="flex flex-col md:flex-row items-center gap-4 justify-around">
         <div>
@@ -16,16 +16,16 @@ const HeroSection = () => {
             <br /> that just Works
           </h1>
           <p>
-            <span className="text-blue-500">Immerse your players</span> in the
+            <span className="text-blue-200">Immerse your players</span> in the
             world you&apos;ve imagined with a seamless music score that adapts
             to the player&apos;s actions and your world around them. My PhD in
             Musicology has powered me with deep and diverse knowledge of music,
             enabling me to compose in{" "}
-            <span className="text-blue-500">any genre</span>.
+            <span className="text-blue-200">any genre</span>.
           </p>
           <p>
             I will compose and implement an adaptive score{" "}
-            <span className="text-blue-500">directly into your engine</span> so
+            <span className="text-blue-200">directly into your engine</span> so
             your programmers don&apos;t have to.
           </p>
           <div className="flex flex-col md:flex-row gap-4 py-4">

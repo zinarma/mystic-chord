@@ -28,10 +28,10 @@ const navigationItemList = [
     name: "About",
     link: "about",
   },
-  {
-    name: "Reviews",
-    link: "reviews",
-  },
+  // {
+  //   name: "Reviews",
+  //   link: "reviews",
+  // },
   {
     name: "Contact",
     link: "contact",
