@@ -14,6 +14,7 @@ import {
 import Image from "next/image";
 import mainLogo from "@/public/main-logo.png";
 import { useState } from "react";
+import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 
 const navigationItemList = [
   {

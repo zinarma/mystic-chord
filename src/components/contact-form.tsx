@@ -1,32 +1,71 @@
 "use client";
 
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+
 import { useToast } from "@/hooks/use-toast";
-import { FormEvent, useState } from "react";
+import { useState } from "react";
+
+const formSchema = z.object({
+  email: z.string().email().min(2).max(100),
+  message: z.string().min(10).max(1000),
+});
 
 const ContactForm = () => {
   const { toast } = useToast();
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [emailSent, setEmailSent] = useState(false);
 
-  const sendEmail = async (event: FormEvent) => {
-    event.preventDefault();
-    setLoading(true);
-    setEmail("");
-    setMessage("");
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: "",
+      message: "",
+    },
+  });
+  // const { isLoading } = form.formState;
+  // console.log({ isLoading });
 
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(values);
     const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
     await wait();
-    setLoading(false);
+    setEmailSent(true);
     toast({
       title: "Success: Email Sent",
       description: "We will get back to you as soon as possible.",
     });
-  };
+  }
+
+  if (emailSent)
+    return (
+      <div
+        id="contact"
+        className="flex flex-col justify-center p-4 items-center w-screen h-screen"
+      >
+        <div className="flex flex-col rounded-xl p-4 bg-gray-800 w-full max-w-[64ch]">
+          <h1 className="underline-gradient p-4">All Done!</h1>
+          <p className="p-8">
+            Thank you for reaching out to us. Your Email was sent successfully.
+            We will get back to you as soon as possible.
+          </p>
+        </div>
+      </div>
+    );
 
   return (
     <div
@@ -35,41 +74,48 @@ const ContactForm = () => {
     >
       <div className="flex flex-col rounded-xl p-4 bg-gray-800 w-full max-w-[64ch]">
         <h1 className="p-4">Contact Us</h1>
-        <form className="flex flex-col">
-          <div className="grid p-4 gap-1.5">
-            <Label htmlFor="email">Your Email</Label>
-            <Input
-              className="bg-gray-900"
-              type="email"
-              id="email"
-              placeholder="Email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              disabled={loading}
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-8 p-4"
+          >
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input
+                      className="bg-gray-900"
+                      placeholder="name@example.com"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </div>
-          <div className="grid p-4 gap-1.5">
-            <Label htmlFor="message">Your message</Label>
-            <Textarea
-              className="bg-gray-900"
-              placeholder="Type your message here."
-              id="message"
-              value={message}
-              onChange={(event) => setMessage(event.target.value)}
-              disabled={loading}
+            <FormField
+              control={form.control}
+              name="message"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Your Message</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      className="bg-gray-900"
+                      placeholder="Your message..."
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </div>
-          <div className="grid p-4 gap-1.5">
-            <Button
-              onClick={sendEmail}
-              className="w-24"
-              type="submit"
-              disabled={loading}
-            >
-              {loading ? "Sending..." : "Submit"}
-            </Button>
-          </div>
-        </form>
+            <Button type="submit">Submit</Button>
+          </form>
+        </Form>
       </div>
     </div>
   );
