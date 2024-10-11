@@ -15,15 +15,14 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 
 const formSchema = z.object({
-  email: z.string().email().min(2).max(100),
-  message: z.string().min(10).max(1000),
+  subject: z.string().email().min(2).max(100),
+  body: z.string().min(10).max(1000),
 });
 
 const ContactForm = () => {
@@ -33,23 +32,23 @@ const ContactForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
-      message: "",
+      subject: "",
+      body: "",
     },
   });
   // const { isLoading } = form.formState;
   // console.log({ isLoading });
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
-    await wait();
-    setEmailSent(true);
-    toast({
-      title: "Success: Email Sent",
-      description: "We will get back to you as soon as possible.",
-    });
-  }
+  // async function onSubmit(values: z.infer<typeof formSchema>) {
+  //   console.log(values);
+  //   const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
+  //   await wait();
+  //   setEmailSent(true);
+  //   toast({
+  //     title: "Success: Email Sent",
+  //     description: "We will get back to you as soon as possible.",
+  //   });
+  // }
 
   if (emailSent)
     return (
@@ -76,12 +75,14 @@ const ContactForm = () => {
         <h1 className="p-4">Contact Us</h1>
         <Form {...form}>
           <form
-            onSubmit={form.handleSubmit(onSubmit)}
+            action="mailto: ross@mysticchordmusic.com"
+            // enctype="multipart/form-data"
+            // onSubmit={form.handleSubmit(onSubmit)}
             className="space-y-8 p-4"
           >
             <FormField
               control={form.control}
-              name="email"
+              name="subject"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Email</FormLabel>
@@ -98,7 +99,7 @@ const ContactForm = () => {
             />
             <FormField
               control={form.control}
-              name="message"
+              name="body"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Your Message</FormLabel>
