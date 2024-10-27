@@ -1,30 +1,37 @@
-import firstImage from "@/public/to-train-a-killer.png";
+import toTrainAKillerImage from "@/public/to-train-a-killer.png";
+import mainLogo from "@/public/main-logo.png";
+import { StaticImageData } from "next/image";
 
 export interface Album {
     name: string
     artist: string
-    cover: any
+    cover: StaticImageData
+    song?: string
   }
   
   export const listenNowAlbums: Album[] = [
     {
       name: "To Train a Killer (First Hunt)",
       artist: "Full Adaptive OST",
-      cover: {firstImage},
+      cover: toTrainAKillerImage,
+      song: "to-train-a-killer.wav",
     },
     {
       name: "Async Awakenings",
       artist: "Nina Netcode",
-      cover: {firstImage},
+      cover: mainLogo,
+      song: "music/to-train-a-killer.wav",
     },
     {
       name: "The Art of Reusability",
       artist: "Lena Logic",
-      cover: {firstImage},
+      cover: mainLogo,
+      song: "music/to-train-a-killer.wav",
     },
     {
       name: "Stateful Symphony",
       artist: "Beth Binary",
-      cover: {firstImage},
+      cover: mainLogo,
+      song: "music/to-train-a-killer.wav",
     },
   ]

@@ -21,7 +21,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 
 const formSchema = z.object({
-  subject: z.string().email().min(2).max(100),
+  subject: z.string().min(2).max(100),
   body: z.string().min(10).max(1000),
 });
 
@@ -75,8 +75,9 @@ const ContactForm = () => {
         <h1 className="p-4">Contact Us</h1>
         <Form {...form}>
           <form
+            method="POST"
             action="mailto: ross@mysticchordmusic.com"
-            // enctype="multipart/form-data"
+            encType="text/plain"
             // onSubmit={form.handleSubmit(onSubmit)}
             className="space-y-8 p-4"
           >
@@ -85,11 +86,11 @@ const ContactForm = () => {
               name="subject"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>Subject</FormLabel>
                   <FormControl>
                     <Input
                       className="bg-gray-900"
-                      placeholder="name@example.com"
+                      placeholder="Email Title..."
                       {...field}
                     />
                   </FormControl>

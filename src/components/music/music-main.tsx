@@ -41,6 +41,10 @@ export default function MusicPage() {
           </div>
         </div>
       </div>
+      {/* <audio controls>
+        <source src="/Ocean.mp3" type="audio/wav" />
+        Your browser does not support the audio element.
+      </audio> */}
     </>
   );
 }
