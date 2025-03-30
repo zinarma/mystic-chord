@@ -38,6 +38,7 @@ const SoundcloudEmbed = () => {
         <TabsList>
           <TabsTrigger value="soundcloud">Soundcloud</TabsTrigger>
           <TabsTrigger value="youtube">Youtube</TabsTrigger>
+          <TabsTrigger value="spotify">Spotify</TabsTrigger>
         </TabsList>
         <TabsContent value="soundcloud">
           <iframe
@@ -74,6 +75,17 @@ const SoundcloudEmbed = () => {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             // referrerpolicy="strict-origin-when-cross-origin"
             // allowfullscreen
+          ></iframe>
+        </TabsContent>
+        <TabsContent value="spotify">
+          <iframe
+            src="https://open.spotify.com/embed/artist/5vIXrHD9MfBv9HenSVI3gj?utm_source=generator"
+            width="100%"
+            height="352"
+            // frameBorder="0"
+            // allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
           ></iframe>
         </TabsContent>
       </Tabs>

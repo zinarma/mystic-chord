@@ -12,10 +12,31 @@ const HeroSection = () => {
       <div className="flex flex-col md:flex-row items-center gap-4 justify-around">
         <div>
           <h1 className="--font-raleway">
+            Music with <span className="text-gradient">Legacy</span>
+            <br />
+          </h1>
+
+          <p>
+            <span className="text-blue-200">Immerse your players</span> in the
+            world you’ve imagined with a score that draws on historical context
+            to create{" "}
+            <span className="text-blue-200">authentic soundscapes</span>. My PhD
+            in Musicology has powered me with deep and diverse knowledge of
+            music from its most elemental levels to the social forces that shape
+            the sounds we hear.
+          </p>
+          <p>
+            I will compose not just a soundtrack, but a{" "}
+            <span className="text-blue-200">soundworld</span> that grows
+            organically from your creative vision.
+          </p>
+
+          {/* <h1 className="--font-raleway">
             Seamless, <span className="text-gradient">Adaptive Music</span>
             <br /> that just Works
-          </h1>
-          <p>
+          </h1> */}
+
+          {/* <p>
             <span className="text-blue-200">Immerse your players</span> in the
             world you&apos;ve imagined with a seamless music score that adapts
             to the player&apos;s actions and your world around them. My PhD in
@@ -27,7 +48,7 @@ const HeroSection = () => {
             I will compose and implement an adaptive score{" "}
             <span className="text-blue-200">directly into your engine</span> so
             your programmers don&apos;t have to.
-          </p>
+          </p> */}
           <div className="flex flex-col md:flex-row gap-4 py-4">
             <a href="#contact">
               <Button className="text-xl py-6 px-8">
